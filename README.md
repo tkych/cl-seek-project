@@ -1,4 +1,4 @@
-Last modified : 2013-01-12 14:01:20 tkych
+Last modified : 2013-01-12 15:18:04 tkych
 
 Version: 0.1.00 (beta)
 
@@ -9,8 +9,8 @@ CL-PROJECT-SEARCH - search in Quicklisp, Cliki, Github-Repos
 Introduction
 ------------
 
-CL-PROJECT-SEARCH is search-engine for Common Lisp.
-The function SEARCH-PROJECT searches for CL project in Quicklisp, Cliki,
+CL-PROJECT-SEARCH is a search-engine interface for Common Lisp.
+The function SEARCH-PROJECT searches for a CL project in Quicklisp, Cliki,
 Github-Repos.
 
 

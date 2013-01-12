@@ -1,4 +1,4 @@
-Last modified : 2013-01-12 15:18:04 tkych
+Last modified : 2013-01-12 15:58:04 tkych
 
 Version: 0.1.00 (beta)
 
@@ -60,12 +60,9 @@ SEARCH-RESULT: "prime"
 ; ...
 => T
 
-CL-REPL> (cl-project-search:search-project "prime" :url? t :description? t)
+CL-REPL> (cl-project-search:search-project "prime" :url? t :description? t :quicklisp? nil)
 
 SEARCH-RESULT: "prime"
-
- SEARCH-SPACE: Quicklisp
-  cl-prime-maker
 
  SEARCH-SPACE: Cliki
   Araneida

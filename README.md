@@ -1,17 +1,17 @@
-Last modified : 2013-01-12 15:58:04 tkych
+Last modified : 2013-01-13 00:21:26 tkych
 
 Version: 0.1.00 (beta)
 
 
-CL-PROJECT-SEARCH - search in Quicklisp, Cliki, Github-Repos
-============================================================
+CL-PROJECT-SEARCH : search in Quicklisp, Cliki, Github
+======================================================
 
 Introduction
 ------------
 
-CL-PROJECT-SEARCH is a search-engine interface for Common Lisp.
-The function SEARCH-PROJECT searches for a CL project in Quicklisp, Cliki,
-Github-Repos.
+CL-PROJECT-SEARCH is a search-engine-interface for Common Lisp.
+The function SEARCH-PROJECT searches for a CL project in Quicklisp,
+Cliki, Github-Repos.
 
 
 Examples
@@ -80,6 +80,7 @@ SEARCH-RESULT: "prime"
   cl-prime-maker
       https://github.com/nakrakiiya/cl-prime-maker
       A simple package to generate big prime numbers.
+; ...
 => T
 
 CL-REPL> (cl-project-search:search-project 'Supercalifragilisticexpialidocious)
@@ -130,9 +131,9 @@ If URL? is T, display project's url (except for Quicklisp-search).
        cliki,github-searches "foo" AND "bar".
 
 - Max number of search result:
-  Quicklisp-search - not limited,
-  Github-search - 100,
-  Cliki-search  -  50.
+  Quicklisp - not limited,
+  Github    - 100,
+  Cliki     -  50.
 
 
 TODO

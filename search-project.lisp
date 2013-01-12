@@ -1,4 +1,4 @@
-;;;; Last modified : 2013-01-12 12:37:51 tkych
+;;;; Last modified : 2013-01-12 18:26:09 tkych
 
 ;; cl-project-search/search-project.lisp
 
@@ -134,7 +134,7 @@ N.B. #\Space in SEARCH-WORD:
 
 (defun output-cliki-results (results)
   (loop :for (title url description) :in results
-        :do (format t "~&  ~A" title)
+        :do (format t "~&  ~A" (html-entities:decode-entities title))
             (when *output-url-p*
               (format t "~%      http://www.cliki.net~A" url))
             (when *output-description-p*

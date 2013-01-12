@@ -1,10 +1,10 @@
-;;;; Last modified : 2013-01-12 10:41:38 tkych
+;;;; Last modified : 2013-01-12 13:34:21 tkych
 
 ;; cl-project-search/cl-project-search.asd
 
 
 ;;====================================================================
-;; CL-PROJECT-SEARCH: Search for Quicklisp, Cliki, Github-repos
+;; CL-PROJECT-SEARCH: Search in Quicklisp, Cliki, Github-repos
 ;;====================================================================
 ;; cl-project-search/
 ;;   cl-project-search.asd

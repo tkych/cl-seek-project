@@ -1,4 +1,4 @@
-Last modified : 2013-01-12 12:53:13 tkych
+Last modified : 2013-01-12 13:22:40 tkych
 
 Version: 0.1.00 (beta)
 
@@ -117,8 +117,7 @@ Download & Install
 Referece Manual
 ---------------
 
-#### [Function] SEARCH-PROJECT _search-word_ _&key_ _web?_ _description?_ _url?_
-                                                    _cliki?_ _github?_ _quicklisp?_
+#### [Function] SEARCH-PROJECT _search-word_ _&key_ _web?_ _description?_ _url?_ _cliki?_ _github?_ _quicklisp?_
 
 Search for project with SEARCH-WORD in Quicklisp, Cliki, Github-Repos.
 SEARCH-WORD must be strings or symbols (symbols will be converted to downcase-strings).
@@ -128,7 +127,7 @@ At least one search-space must be specified.
 If DESCRIPTION? is T, display project's description (except for Quicklisp-search).
 If URL? is T, display project's url (except for Quicklisp-search).
 
-- #\Space in SEARCH-WORD:
+- Space in SEARCH-WORD:
   In case search-word contains space, Quicklisp-search is OR-search,
   whereas Cliki,Github-search is AND-search.
   e.g. (search-project "foo bar")

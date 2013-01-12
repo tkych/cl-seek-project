@@ -1,4 +1,4 @@
-Last modified : 2013-01-12 13:52:01 tkych
+Last modified : 2013-01-12 13:59:44 tkych
 
 Version: 0.1.00 (beta)
 
@@ -21,12 +21,14 @@ Examples
 CL-REPL> (cl-project-search:search-project "prime")
 
 SEARCH-RESULT: "prime"
-  SEARCH-SPACE: Quicklisp
+
+ SEARCH-SPACE: Quicklisp
   cl-prime-maker
   SEARCH-SPACE: Cliki
   Araneida
 ; ...
-  SEARCH-SPACE: Github-Repos
+
+ SEARCH-SPACE: Github-Repos
   Prime-World-Dno
   prime-pi-maxima
   cl-prime-maker
@@ -35,17 +37,18 @@ SEARCH-RESULT: "prime"
 ; ...
 => T
 
-CL-REPL> (cl-project-search:search-project
-          "prime" :description? t)
+CL-REPL> (cl-project-search:search-project "prime" :description? t)
 
 SEARCH-RESULT: "prime"
-  SEARCH-SPACE: Quicklisp
+
+ SEARCH-SPACE: Quicklisp
   cl-prime-maker
   SEARCH-SPACE: Cliki
   Araneida
       Araneida is a fairly small free extensible HTTP server for SBCL and many other Common Lisp implementations
 ; ...
-  SEARCH-SPACE: Github-Repos
+
+ SEARCH-SPACE: Github-Repos
   Prime-World-Dno
       Строим графики на основе рейтингов в Prime World
   prime-pi-maxima
@@ -55,18 +58,19 @@ SEARCH-RESULT: "prime"
 ; ...
 => T
 
-CL-REPL> (cl-project-search:search-project
-          "prime" :url? t :description? t)
+CL-REPL> (cl-project-search:search-project "prime" :url? t :description? t)
 
 SEARCH-RESULT: "prime"
-  SEARCH-SPACE: Quicklisp
+
+ SEARCH-SPACE: Quicklisp
   cl-prime-maker
   SEARCH-SPACE: Cliki
   Araneida
       http://www.cliki.net/Araneida
       Araneida is a fairly small free extensible HTTP server for SBCL and many other Common Lisp implementations
 ; ...
-  SEARCH-SPACE: Github-Repos
+
+ SEARCH-SPACE: Github-Repos
   Prime-World-Dno
       https://github.com/hijarian/Prime-World-Dno
       Строим графики на основе рейтингов в Prime World
@@ -78,8 +82,7 @@ SEARCH-RESULT: "prime"
       A simple package to generate big prime numbers.
 => T
 
-CL-REPL> (cl-project-search:search-project
-           'Supercalifragilisticexpialidocious)
+CL-REPL> (cl-project-search:search-project 'Supercalifragilisticexpialidocious)
 
 SEARCH RESULT: "supercalifragilisticexpialidocious"
 => NIL

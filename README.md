@@ -1,4 +1,4 @@
-Last modified : 2013-01-12 13:22:40 tkych
+Last modified : 2013-01-12 13:52:01 tkych
 
 Version: 0.1.00 (beta)
 
@@ -17,81 +17,73 @@ Github-Repos.
 Examples
 --------
 
-    CL-REPL> (cl-project-search:search-project "prime")
-    
-    SEARCH-RESULT: "prime"
+```lisp
+CL-REPL> (cl-project-search:search-project "prime")
 
-     SEARCH-SPACE: Quicklisp
-      cl-prime-maker
+SEARCH-RESULT: "prime"
+  SEARCH-SPACE: Quicklisp
+  cl-prime-maker
+  SEARCH-SPACE: Cliki
+  Araneida
+; ...
+  SEARCH-SPACE: Github-Repos
+  Prime-World-Dno
+  prime-pi-maxima
+  cl-prime-maker
+  primes
+  cl-primality
+; ...
+=> T
 
-     SEARCH-SPACE: Cliki
-      Araneida
-    ; ...
+CL-REPL> (cl-project-search:search-project
+          "prime" :description? t)
 
-     SEARCH-SPACE: Github-Repos
-      Prime-World-Dno
-      prime-pi-maxima
-      cl-prime-maker
-      primes
-      cl-primality
-    ; ...
-    => T
-    
-    CL-REPL> (cl-project-search:search-project
-              "prime" :description? t)
-    
-    SEARCH-RESULT: "prime"
+SEARCH-RESULT: "prime"
+  SEARCH-SPACE: Quicklisp
+  cl-prime-maker
+  SEARCH-SPACE: Cliki
+  Araneida
+      Araneida is a fairly small free extensible HTTP server for SBCL and many other Common Lisp implementations
+; ...
+  SEARCH-SPACE: Github-Repos
+  Prime-World-Dno
+      Строим графики на основе рейтингов в Prime World
+  prime-pi-maxima
+      prime counting function for maxima, the CAS
+  cl-prime-maker
+      A simple package to generate big prime numbers.
+; ...
+=> T
 
-     SEARCH-SPACE: Quicklisp
-      cl-prime-maker
+CL-REPL> (cl-project-search:search-project
+          "prime" :url? t :description? t)
 
-     SEARCH-SPACE: Cliki
-      Araneida
-          Araneida is a fairly small free extensible HTTP server for SBCL and many other Common Lisp implementations
-    ; ...
+SEARCH-RESULT: "prime"
+  SEARCH-SPACE: Quicklisp
+  cl-prime-maker
+  SEARCH-SPACE: Cliki
+  Araneida
+      http://www.cliki.net/Araneida
+      Araneida is a fairly small free extensible HTTP server for SBCL and many other Common Lisp implementations
+; ...
+  SEARCH-SPACE: Github-Repos
+  Prime-World-Dno
+      https://github.com/hijarian/Prime-World-Dno
+      Строим графики на основе рейтингов в Prime World
+  prime-pi-maxima
+      https://github.com/jlapeyre/prime-pi-maxima
+      prime counting function for maxima, the CAS
+  cl-prime-maker
+      https://github.com/nakrakiiya/cl-prime-maker
+      A simple package to generate big prime numbers.
+=> T
 
-     SEARCH-SPACE: Github-Repos
-      Prime-World-Dno
-          Строим графики на основе рейтингов в Prime World
-      prime-pi-maxima
-          prime counting function for maxima, the CAS
-      cl-prime-maker
-          A simple package to generate big prime numbers.
-    ; ...
-    => T
-    
-    CL-REPL> (cl-project-search:search-project
-              "prime" :url? t :description? t)
-    
-    SEARCH-RESULT: "prime"
+CL-REPL> (cl-project-search:search-project
+           'Supercalifragilisticexpialidocious)
 
-     SEARCH-SPACE: Quicklisp
-      cl-prime-maker
-
-     SEARCH-SPACE: Cliki
-      Araneida
-          http://www.cliki.net/Araneida
-          Araneida is a fairly small free extensible HTTP server for SBCL and many other Common Lisp implementations
-    ; ...
-
-     SEARCH-SPACE: Github-Repos
-      Prime-World-Dno
-          https://github.com/hijarian/Prime-World-Dno
-          Строим графики на основе рейтингов в Prime World
-      prime-pi-maxima
-          https://github.com/jlapeyre/prime-pi-maxima
-          prime counting function for maxima, the CAS
-      cl-prime-maker
-          https://github.com/nakrakiiya/cl-prime-maker
-          A simple package to generate big prime numbers.
-    => T
-    
-    CL-REPL> (cl-project-search:search-project
-               'Supercalifragilisticexpialidocious)
-    
-    SEARCH RESULT: "supercalifragilisticexpialidocious"
-    => NIL
-    
+SEARCH RESULT: "supercalifragilisticexpialidocious"
+=> NIL
+```    
 
 Depends-on
 ----------

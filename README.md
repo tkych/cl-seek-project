@@ -1,4 +1,4 @@
-Last modified : 2013-01-12 13:59:44 tkych
+Last modified : 2013-01-12 14:01:20 tkych
 
 Version: 0.1.00 (beta)
 
@@ -24,7 +24,8 @@ SEARCH-RESULT: "prime"
 
  SEARCH-SPACE: Quicklisp
   cl-prime-maker
-  SEARCH-SPACE: Cliki
+
+ SEARCH-SPACE: Cliki
   Araneida
 ; ...
 
@@ -43,7 +44,8 @@ SEARCH-RESULT: "prime"
 
  SEARCH-SPACE: Quicklisp
   cl-prime-maker
-  SEARCH-SPACE: Cliki
+
+ SEARCH-SPACE: Cliki
   Araneida
       Araneida is a fairly small free extensible HTTP server for SBCL and many other Common Lisp implementations
 ; ...
@@ -64,7 +66,8 @@ SEARCH-RESULT: "prime"
 
  SEARCH-SPACE: Quicklisp
   cl-prime-maker
-  SEARCH-SPACE: Cliki
+
+ SEARCH-SPACE: Cliki
   Araneida
       http://www.cliki.net/Araneida
       Araneida is a fairly small free extensible HTTP server for SBCL and many other Common Lisp implementations

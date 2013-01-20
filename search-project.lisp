@@ -1,4 +1,4 @@
-;;;; Last modified : 2013-01-12 18:26:09 tkych
+;;;; Last modified : 2013-01-20 22:38:02 tkych
 
 ;; cl-project-search/search-project.lisp
 
@@ -22,24 +22,27 @@
                             (cliki? t) (github? t) (quicklisp? t))
   "Search for project with SEARCH-WORD in Quicklisp, Cliki, Github-Repos.
 SEARCH-WORD must be strings or symbols (symbols will be converted to downcase-strings).
-If WEB? is NIL, not search Cliki and Github-Repos.
-If QUICKLISP? is NIL, not search Quicklisp (also CLIKI?, GITHUB?).
+
+If WEB? is NIL, not search in Cliki and Github-Repos.
+If QUICKLISP? is NIL, not search in Quicklisp (also CLIKI?, GITHUB?).
 At least one search-space must be specified.
+
 If DESCRIPTION? is T, display project's description (except for Quicklisp-search).
 If URL? is T, display project's url (except for Quicklisp-search).
 
-N.B. #\Space in SEARCH-WORD:
-       In case search-word contains #\Space, Quicklisp-search is OR-search,
-       whereas Cliki,Github-search is AND-search.
+N.B.
+ * #\\Space in SEARCH-WORD:
+   In case search-word contains #\\Space, Quicklisp-search is OR-search,
+   whereas Cliki,Github-search is AND-search.
 
-       e.g. (search-project \"foo bar\")
-            quicklisp-search for \"foo\" OR \"bar\",
-            cliki,github-search for \"foo\" AND \"bar\".
+   e.g. (search-project \"foo bar\")
+        quicklisp-search for \"foo\" OR \"bar\",
+        cliki,github-search for \"foo\" AND \"bar\".
 
-     Max number of search result:
-       Quicklisp-search - not limited,
-       Github-search - 100,
-       Cliki-search  -  50."
+ * Max number of search result:
+   Quicklisp-search - not limited,
+   Github-search - 100,
+   Cliki-search  -  50."
   (unless (or (stringp search-word) (symbolp search-word))
     (error "~S is not strings or symbols." search-word))
   (unless (or quicklisp?

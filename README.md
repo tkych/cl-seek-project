@@ -1,4 +1,4 @@
-Last modified : 2013-01-26 19:22:32 tkych
+Last modified : 2013-01-26 19:27:21 tkych
 
 Version: 0.1.00 (beta)
 
@@ -12,7 +12,7 @@ Introduction
 Have you ever experienced the following?
 When you are programming at the REPL, you launch the browser in order
 to find a CL library.
-However, as a result of accidental clicks, you spent wasted time.
+However, as a result of accidental clicks, you have wasted time.
 
 CL-PROJECT-SEARCH is a library for you (and I) like that.
 Without leaving the REPL, we could find the seeking library.

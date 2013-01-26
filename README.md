@@ -1,4 +1,4 @@
-Last modified : 2013-01-19 00:04:03 tkych
+Last modified : 2013-01-26 19:18:21 tkych
 
 Version: 0.1.00 (beta)
 
@@ -8,6 +8,19 @@ CL-PROJECT-SEARCH : search in Quicklisp, Cliki, Github
 
 Introduction
 ------------
+
+Have you ever experienced the following?
+When you are programming at the REPL, you launch the browser in order
+to find a CL library.
+However, as a result of accidental clicks, you spent wasted time.
+
+CL-PROJECT-SEARCH is a library for you (and I).
+Without leaving the REPL, we could find the seeking library.
+Therefore we never waste time by looking at unnecessary web page.
+
+
+Description
+-----------
 
 CL-PROJECT-SEARCH is a search-engine-interface for Common Lisp.
 The function SEARCH-PROJECT searches for a CL project in Quicklisp,

@@ -1,4 +1,4 @@
-Last modified : 2013-02-21 20:59:35 tkych
+Last modified : 2013-02-21 21:06:44 tkych
 
 Version: 0.1.00 (beta)
 
@@ -12,6 +12,27 @@ Introduction
 CL-PROJECT-SEARCH is a search-engine-interface for Common Lisp.
 The function SEARCH-PROJECT searches for a CL project in Quicklisp,
 Cliki, Github-Repos.
+
+
+Depends-on
+----------
+
+- anaphora
+- iterate
+- cl-ppcre
+- drakma
+- flexi-streams
+- yason
+- do-urlencode
+- html-entities
+
+
+Download & Install
+------------------
+
+0. SHELL$   `git clone https://github.com/tkych/cl-project-search`
+1. CL-REPL> `(push #p"/path-to-cl-project-search/cl-project-search/" asdf:*central-registry*)`
+2. CL-REPL> `(ql:quickload :cl-project-search)`
 
 
 Examples
@@ -107,26 +128,6 @@ SEARCH-RESULT: "graphviz"
 => T
 ```    
 
-Depends-on
-----------
-
-- anaphora
-- iterate
-- cl-ppcre
-- drakma
-- flexi-streams
-- yason
-- do-urlencode
-- html-entities
-
-
-Download & Install
-------------------
-
-0. SHELL$   `git clone https://github.com/tkych/cl-project-search`
-1. CL-REPL> `(push #p"/path-to-cl-project-search/cl-project-search/" asdf:*central-registry*)`
-2. CL-REPL> `(ql:quickload :cl-project-search)`
-
 
 Referece Manual
 ---------------
@@ -159,7 +160,6 @@ TODO
 
 - SEARCH-PROJECT: add search-space (bitbucket, google-code, etc.)
 - SEARCH-PROJECT: pprint: for discription
-
 
 
 Author, License, Copyright

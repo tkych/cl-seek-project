@@ -1,4 +1,4 @@
-Last modified : 2013-02-21 21:06:44 tkych
+Last modified : 2013-02-21 21:08:38 tkych
 
 Version: 0.1.00 (beta)
 
@@ -30,7 +30,7 @@ Depends-on
 Download & Install
 ------------------
 
-0. SHELL$   `git clone https://github.com/tkych/cl-project-search`
+0. SHELL$   `git clone https://github.com/tkych/cl-project-search.git`
 1. CL-REPL> `(push #p"/path-to-cl-project-search/cl-project-search/" asdf:*central-registry*)`
 2. CL-REPL> `(ql:quickload :cl-project-search)`
 

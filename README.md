@@ -1,6 +1,6 @@
-Last modified : 2013-02-21 21:08:38 tkych
+Last modified : 2013-02-21 21:46:12 tkych
 
-Version: 0.1.00 (beta)
+Version: 0.1.01 (beta)
 
 
 CL-PROJECT-SEARCH : search in Quicklisp, Cliki, Github
@@ -10,7 +10,7 @@ Introduction
 ------------
 
 CL-PROJECT-SEARCH is a search-engine-interface for Common Lisp.
-The function SEARCH-PROJECT searches for a CL project in Quicklisp,
+The function SEEK searches for a cl project in Quicklisp,
 Cliki, Github-Repos.
 
 
@@ -39,12 +39,15 @@ Examples
 --------
 
 ```lisp
-CL-REPL> (cl-project-search:search-project 'Supercalifragilisticexpialidocious)
+CL-REPL> (use-package :cl-project-search)
+T
+
+CL-REPL> (seek 'Supercalifragilisticexpialidocious)
 
 SEARCH RESULT: "supercalifragilisticexpialidocious"
 => NIL
 
-CL-REPL> (cl-project-search:search-project "graphviz")
+CL-REPL> (seek "graphviz")
 
 SEARCH-RESULT: "graphviz"
 
@@ -72,7 +75,7 @@ SEARCH-RESULT: "graphviz"
 
 => T
 
-CL-REPL> (cl-project-search:search-project "graphviz" :description? t :cliki? nil)
+CL-REPL> (seek "graphviz" :description? t :cliki? nil)
 
 SEARCH-RESULT: "graphviz"
 
@@ -101,7 +104,7 @@ SEARCH-RESULT: "graphviz"
 
 => T
 
-CL-REPL> (cl-project-search:search-project "graphviz" :url? t :description? t :github? nil :quicklisp? nil)
+CL-REPL> (seek "graphviz" :url? t :description? t :github? nil :quicklisp? nil)
 
 SEARCH-RESULT: "graphviz"
 
@@ -132,20 +135,20 @@ SEARCH-RESULT: "graphviz"
 Referece Manual
 ---------------
 
-#### [Function] SEARCH-PROJECT _search-word_ _&key_ _web?_ _description?_ _url?_ _cliki?_ _github?_ _quicklisp?_
+#### [Function] SEEK _search-word_ _&key_ _web?_ _description?_ _url?_ _cliki?_ _github?_ _quicklisp?_
 
-Search for project with SEARCH-WORD in Quicklisp, Cliki, Github-Repos.
-SEARCH-WORD must be strings or symbols (symbols will be converted to downcase-strings).
+Search for cl project with _search-word_ in Quicklisp, Cliki, Github-Repos.
+_search-word_ must be string or symbol (symbol will be converted to downcase-string).
 If WEB? is NIL, not search Cliki and Github-Repos.
-If QUICKLISP? is NIL, not search Quicklisp (also CLIKI?, GITHUB?).
+If _quicklisp?_ is NIL, not search Quicklisp (also _cliki?_, _github?_).
 At least one search-space must be specified.
-If DESCRIPTION? is T, display project's description (except for Quicklisp-search).
-If URL? is T, display project's url (except for Quicklisp-search).
+If _description?_ is T, display project's description (except for Quicklisp-search).
+If _url?_ is T, display project's url (except for Quicklisp-search).
 
-- Space in SEARCH-WORD:
-  In case search-word contains space, Quicklisp-search is OR-search,
+- #\Space in _search-word_:
+  In case _search-word_ contains #\space, Quicklisp-search is OR-search,
   whereas Cliki,Github-search is AND-search.
-  e.g. (search-project "foo bar")
+  e.g. (seek "foo bar")
        quicklisp-searches "foo" OR "bar",
        cliki,github-searches "foo" AND "bar".
 

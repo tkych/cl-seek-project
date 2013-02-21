@@ -1,4 +1,4 @@
-;;;; Last modified : 2013-01-12 10:34:36 tkych
+;;;; Last modified : 2013-02-21 21:46:38 tkych
 
 ;; cl-project-search/package.lisp
 
@@ -12,6 +12,6 @@
 (defpackage #:cl-project-search
   (:use :cl :iterate)
   (:import-from #:anaphora #:aif #:awhen #:it)
-  (:export #:search-project))
+  (:export #:seek))
 
 ;;====================================================================

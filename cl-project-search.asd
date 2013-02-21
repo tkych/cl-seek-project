@@ -1,4 +1,4 @@
-;;;; Last modified : 2013-01-12 13:34:21 tkych
+;;;; Last modified : 2013-02-21 21:51:48 tkych
 
 ;; cl-project-search/cl-project-search.asd
 
@@ -9,7 +9,7 @@
 ;; cl-project-search/
 ;;   cl-project-search.asd
 ;;   package.lisp
-;;   project-search.lisp
+;;   seek.lisp
 ;;   README.md
 ;;   LICENSE
 ;;   CHANGELOG
@@ -24,14 +24,14 @@
 (asdf:defsystem #:cl-project-search
   :name        "cl-project-search"
   :description "Search for CL project in Quicklisp, Cliki, Github-repos."
-  :version     "0.1.00"
+  :version     "0.1.01"
   :licence     "MIT License"
   :author      "Takaya Ochiai <tkych.repl@gmail.com>"
   :depends-on  (#:cl-ppcre #:iterate #:anaphora #:drakma
                 #:flexi-streams #:yason #:do-urlencode #:html-entities)
   :serial      t
   :components  ((:file "package")
-                (:file "search-project"))
+                (:file "seek"))
   )
 
 ;;====================================================================

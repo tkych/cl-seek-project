@@ -1,10 +1,10 @@
-;;;; Last modified : 2013-01-20 22:38:02 tkych
+;;;; Last modified : 2013-02-21 21:39:14 tkych
 
-;; cl-project-search/search-project.lisp
+;; cl-project-search/seek.lisp
 
 
 ;;====================================================================
-;; Search-project
+;; Seek
 ;;====================================================================
 
 (In-package #:cl-project-search)
@@ -17,11 +17,10 @@
 ;; !! TODO !! pprint: *display-col-max-num-chars*
 ;; !! TODO !! limit output num:
 ;;            *display-max-num-projects*, if over limit, y-or-n?
-(defun search-project (search-word
-                       &key (web? t) (description? nil) (url? nil)
-                            (cliki? t) (github? t) (quicklisp? t))
-  "Search for project with SEARCH-WORD in Quicklisp, Cliki, Github-Repos.
-SEARCH-WORD must be strings or symbols (symbols will be converted to downcase-strings).
+(defun seek (search-word &key (web? t) (description? nil) (url? nil)
+                              (cliki? t) (github? t) (quicklisp? t))
+  "Search for cl project with SEARCH-WORD in Quicklisp, Cliki, Github-Repos.
+SEARCH-WORD must be string or symbol (symbol will be converted to downcase-string).
 
 If WEB? is NIL, not search in Cliki and Github-Repos.
 If QUICKLISP? is NIL, not search in Quicklisp (also CLIKI?, GITHUB?).
@@ -35,7 +34,7 @@ N.B.
    In case search-word contains #\\Space, Quicklisp-search is OR-search,
    whereas Cliki,Github-search is AND-search.
 
-   e.g. (search-project \"foo bar\")
+   e.g. (seek \"foo bar\")
         quicklisp-search for \"foo\" OR \"bar\",
         cliki,github-search for \"foo\" AND \"bar\".
 

@@ -1,4 +1,4 @@
-Last modified : 2013-02-21 21:46:12 tkych
+Last modified : 2013-02-21 21:59:48 tkych
 
 Version: 0.1.01 (beta)
 
@@ -139,14 +139,14 @@ Referece Manual
 
 Search for cl project with _search-word_ in Quicklisp, Cliki, Github-Repos.
 _search-word_ must be string or symbol (symbol will be converted to downcase-string).
-If WEB? is NIL, not search Cliki and Github-Repos.
+If _web?_ is NIL, not search Cliki and Github-Repos.
 If _quicklisp?_ is NIL, not search Quicklisp (also _cliki?_, _github?_).
 At least one search-space must be specified.
 If _description?_ is T, display project's description (except for Quicklisp-search).
 If _url?_ is T, display project's url (except for Quicklisp-search).
 
-- #\Space in _search-word_:
-  In case _search-word_ contains #\space, Quicklisp-search is OR-search,
+- Space in _search-word_:
+  If _search-word_ contains #\space, Quicklisp-search is OR-search,
   whereas Cliki,Github-search is AND-search.
   e.g. (seek "foo bar")
        quicklisp-searches "foo" OR "bar",

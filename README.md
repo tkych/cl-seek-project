@@ -1,17 +1,16 @@
-Last modified : 2013-02-21 21:59:48 tkych
+Last modified : 2013-02-22 19:47:57 tkych
 
-Version: 0.1.01 (beta)
+Version: 0.1.11 (beta)
 
 
-CL-PROJECT-SEARCH : search in Quicklisp, Cliki, Github
-======================================================
+CL-SEEK-PROJECT : Seek CL Project in Quicklisp, Cliki, Github
+=============================================================
 
 Introduction
 ------------
 
-CL-PROJECT-SEARCH is a search-engine-interface for Common Lisp.
-The function SEEK searches for a cl project in Quicklisp,
-Cliki, Github-Repos.
+CL-SEEK-PROJECT is a search-engine-interface for Common Lisp.
+The function SEEK searches for cl project in Quicklisp, Cliki, Github-Repos at REPL.
 
 
 Depends-on
@@ -30,16 +29,16 @@ Depends-on
 Download & Install
 ------------------
 
-0. SHELL$   `git clone https://github.com/tkych/cl-project-search.git`
-1. CL-REPL> `(push #p"/path-to-cl-project-search/cl-project-search/" asdf:*central-registry*)`
-2. CL-REPL> `(ql:quickload :cl-project-search)`
+0. SHELL$   `git clone https://github.com/tkych/cl-seek-project.git`
+1. CL-REPL> `(push #p"/path-to-cl-seek-project/cl-seek-project/" asdf:*central-registry*)`
+2. CL-REPL> `(ql:quickload :cl-seek-project)`
 
 
 Examples
 --------
 
 ```lisp
-CL-REPL> (use-package :cl-project-search)
+CL-REPL> (use-package :cl-seek-project)
 T
 
 CL-REPL> (seek 'Supercalifragilisticexpialidocious)
@@ -149,13 +148,13 @@ If _url?_ is T, display project's url (except for Quicklisp-search).
   If _search-word_ contains #\space, Quicklisp-search is OR-search,
   whereas Cliki,Github-search is AND-search.
   e.g. (seek "foo bar")
-       quicklisp-searches "foo" OR "bar",
-       cliki,github-searches "foo" AND "bar".
+       quicklisp-searches    - "foo" OR "bar"
+       cliki,github-searches - "foo" AND "bar"
 
 - Max number of search result:
-  Quicklisp - not limited,
-  Github    - 100,
-  Cliki     -  50.
+  Quicklisp - unlimited
+  Github    - 100
+  Cliki     - 50
 
 
 TODO

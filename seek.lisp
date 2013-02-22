@@ -1,13 +1,13 @@
-;;;; Last modified : 2013-02-21 21:39:14 tkych
+;;;; Last modified : 2013-02-22 19:42:49 tkych
 
-;; cl-project-search/seek.lisp
+;; cl-seek-project/seek.lisp
 
 
 ;;====================================================================
 ;; Seek
 ;;====================================================================
 
-(In-package #:cl-project-search)
+(In-package #:cl-seek-project)
 
 
 (defparameter *output-description-p* t)

@@ -1,3 +1,8 @@
+Version 0.1.11
+2013-02-22
+Rename : Repo cl-project-search -> cl-seek-project
+       : Thanks Robert Smith for useful suggestion.
+
 Version 0.1.01
 2013-02-21
 Rename: fn search-project -> seek

@@ -1,4 +1,4 @@
-Last modified : 2013-02-22 19:47:57 tkych
+Last modified : 2013-02-24 10:58:01 tkych
 
 Version: 0.1.11 (beta)
 
@@ -38,7 +38,7 @@ Examples
 --------
 
 ```lisp
-CL-REPL> (use-package :cl-seek-project)
+CL-REPL> (use-package :cl-seek-project)  ;only 'seek' is exported symbol.
 T
 
 CL-REPL> (seek 'Supercalifragilisticexpialidocious)
@@ -147,14 +147,14 @@ If _url?_ is T, display project's url (except for Quicklisp-search).
 - Space in _search-word_:
   If _search-word_ contains #\space, Quicklisp-search is OR-search,
   whereas Cliki,Github-search is AND-search.
-  e.g. (seek "foo bar")
-       quicklisp-searches    - "foo" OR "bar"
-       cliki,github-searches - "foo" AND "bar"
+  e.g. (seek "foo bar"):
+       quicklisp-search    - "foo" OR "bar",
+       cliki,github-search - "foo" AND "bar".
 
 - Max number of search result:
-  Quicklisp - unlimited
-  Github    - 100
-  Cliki     - 50
+  Quicklisp - unlimited,
+  Github    - 100,
+  Cliki     - 50.
 
 
 TODO

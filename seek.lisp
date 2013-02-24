@@ -1,4 +1,4 @@
-;;;; Last modified : 2013-02-22 19:42:49 tkych
+;;;; Last modified : 2013-02-24 10:53:29 tkych
 
 ;; cl-seek-project/seek.lisp
 
@@ -39,11 +39,11 @@ N.B.
         cliki,github-search for \"foo\" AND \"bar\".
 
  * Max number of search result:
-   Quicklisp-search - not limited,
-   Github-search - 100,
-   Cliki-search  -  50."
+   Quicklisp-search - unlimited
+   Github-search    - 100
+   Cliki-search     - 50"
   (unless (or (stringp search-word) (symbolp search-word))
-    (error "~S is not strings or symbols." search-word))
+    (error "~S is not string or symbol." search-word))
   (unless (or quicklisp?
               (and web? (or cliki? github?)))
     (error "There is no search-space."))
@@ -52,8 +52,11 @@ N.B.
         (word-string
          (write-to-string search-word :case :downcase :escape nil)))
     (format t "~&SEARCH-RESULT: ~S~%" word-string)
+
+    #+quicklisp  ;!? quicklisp is not library, so probably need add this !?
     (when (and quicklisp? (search-quicklisp word-string))
       (setf found? t))
+
     (when web?
       (let ((drakma:*drakma-default-external-format* :utf-8)
             (*output-description-p* description?))
@@ -65,33 +68,37 @@ N.B.
     found?))
 
 ;;--------------------------------------
-(defun search-quicklisp (word-string)
-  (let ((found? nil))
-    (dolist (wd (ppcre:split " " word-string))
-      (awhen (search-ql-systems wd)
-        (unless found?
-          (format t "~% SEARCH-SPACE: Quicklisp~%")
-          (setf found? t))
-        (output-ql-results it)))
-    found?))
+#+quicklisp  ;!? quicklisp is not library, so probably need add this !?
+(progn
+  (defun search-quicklisp (word-string)
+    (let ((found? nil))
+      (dolist (wd (ppcre:split " " word-string))
+        (awhen (search-ql-systems wd)
+          (unless found?
+            (format t "~% SEARCH-SPACE: Quicklisp~%")
+            (setf found? t))
+          (output-ql-results it)))
+      found?))
 
-(defun search-ql-systems (word-string)
-  (loop :for system :in (ql-dist:provided-systems t)
-        :when (or (search word-string (ql-dist:name system))
-                  (search word-string
-                          (ql-dist:name (ql-dist:release system))))
-        :collect system))
+  (defun search-ql-systems (word-string)
+    (loop :for system :in (ql-dist:provided-systems t)
+       :when (or (search word-string (ql-dist:name system))
+                 (search word-string
+                         (ql-dist:name (ql-dist:release system))))
+       :collect system))
 
-(defun output-ql-results (systems)
-  (dolist (system systems)
-    (format t "~&  ~A" (ql-dist:name system))
-    ;; (when *output-url-p*
-    ;;   (format t "~%      "
-    ;;           ))
-    ;; (when *output-description-p*
-    ;;   (format t "~%      ~A"
-    ;;           (ql-dist:short-description system)))
-    (terpri)))
+  (defun output-ql-results (systems)
+    (dolist (system systems)
+      (format t "~&  ~A" (ql-dist:name system))
+      ;; (when *output-url-p*
+      ;;   (format t "~%      "
+      ;;           ))
+      ;; (when *output-description-p*
+      ;;   (format t "~%      ~A"
+      ;;           (ql-dist:short-description system)))
+      (terpri)))
+
+  ) ;end of #+quicklisp
 
 
 ;;--------------------------------------

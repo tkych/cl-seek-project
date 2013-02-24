@@ -3,8 +3,8 @@ Last modified : 2013-02-24 10:58:01 tkych
 Version: 0.1.11 (beta)
 
 
-CL-SEEK-PROJECT : Seek CL Project in Quicklisp, Cliki, Github
-=============================================================
+CL-SEEK-PROJECT : Seek Project in Quicklisp, Cliki, Github
+==========================================================
 
 Introduction
 ------------

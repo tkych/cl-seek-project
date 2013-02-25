@@ -1,7 +1,12 @@
+Version 0.1.12
+2013-02-25
+Add:    search-space BitBucket-Repos.
+Modify: tentative modification for quicklisp-build.
+
 Version 0.1.11
 2013-02-22
-Rename : Repo cl-project-search -> cl-seek-project
-       : Thanks Robert Smith for useful suggestion.
+Rename: Repo cl-project-search -> cl-seek-project
+      : Thanks Robert Smith for useful suggestion.
 
 Version 0.1.01
 2013-02-21

@@ -1,10 +1,10 @@
-;;;; Last modified : 2013-02-22 19:48:32 tkych
+;;;; Last modified : 2013-02-25 21:39:20 tkych
 
 ;; cl-seek-project/cl-seek-project.asd
 
 
 ;;====================================================================
-;; CL-SEEK-PROJECT: Seek CL Project in Quicklisp, Cliki, Github-repos
+;; CL-SEEK-PROJECT: in Quicklisp, Cliki, GitHub, BitBucket
 ;;====================================================================
 ;; cl-seek-project/
 ;;   cl-seek-project.asd
@@ -23,8 +23,8 @@
 
 (asdf:defsystem #:cl-seek-project
   :name        "cl-seek-project"
-  :description "Seek for CL project in Quicklisp, Cliki, Github-repos."
-  :version     "0.1.11"
+  :description "Seek for CL project in Quicklisp, Cliki, GitHub-Repos, BitBucket-Repos."
+  :version     "0.1.12"
   :licence     "MIT License"
   :author      "Takaya Ochiai <tkych.repl@gmail.com>"
   :depends-on  (#:cl-ppcre #:iterate #:anaphora #:drakma

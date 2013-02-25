@@ -1,16 +1,17 @@
-Last modified : 2013-02-24 10:58:01 tkych
+Last modified : 2013-02-25 21:37:13 tkych
 
-Version: 0.1.11 (beta)
+Version: 0.1.12 (beta)
 
 
-CL-SEEK-PROJECT : Seek Project in Quicklisp, Cliki, Github
-==========================================================
+CL-SEEK-PROJECT : in Quicklisp, Cliki, Github, BitBucket
+========================================================
 
 Introduction
 ------------
 
 CL-SEEK-PROJECT is a search-engine-interface for Common Lisp.
-The function SEEK searches for cl project in Quicklisp, Cliki, Github-Repos at REPL.
+The function SEEK searches for cl project in Quicklisp, Cliki, Github-Repos, BitBucket-Repos.
+And search-results is output in REPL.
 
 
 Depends-on
@@ -134,34 +135,42 @@ SEARCH-RESULT: "graphviz"
 Referece Manual
 ---------------
 
-#### [Function] SEEK _search-word_ _&key_ _web?_ _description?_ _url?_ _cliki?_ _github?_ _quicklisp?_
+#### [Function] SEEK _search-word_ _&key_ _web?_ _description?_ _url?_ _cliki?_ _github?_ _quicklisp?_ _bitbucket?_
 
-Search for cl project with _search-word_ in Quicklisp, Cliki, Github-Repos.
-_search-word_ must be string or symbol (symbol will be converted to downcase-string).
-If _web?_ is NIL, not search Cliki and Github-Repos.
-If _quicklisp?_ is NIL, not search Quicklisp (also _cliki?_, _github?_).
+Search for cl project with _search-word_ in Quicklisp, Cliki, GitHub-Repos, BitBucket-Repos.
+_search-word_ must be string or symbol (symbol will be coerced to downcase-string).
+If _web?_ is NIL, not search Cliki, GitHub-Repos and BitBucket-Repos.
+If _quicklisp?_ is NIL, not search Quicklisp (also _cliki?_, _github?_, _bitbucket?_).
 At least one search-space must be specified.
 If _description?_ is T, display project's description (except for Quicklisp-search).
 If _url?_ is T, display project's url (except for Quicklisp-search).
 
 - Space in _search-word_:
   If _search-word_ contains #\space, Quicklisp-search is OR-search,
-  whereas Cliki,Github-search is AND-search.
+  whereas Cliki,GitHub,BitBucket-search is AND-search.
   e.g. (seek "foo bar"):
-       quicklisp-search    - "foo" OR "bar",
-       cliki,github-search - "foo" AND "bar".
+       Quicklisp-search    - "foo" OR "bar",
+       Cliki,GitHub,BitBucket-search - "foo" AND "bar".
 
 - Max number of search result:
   Quicklisp - unlimited,
-  Github    - 100,
-  Cliki     - 50.
+  GitHub    - 100,
+  Cliki     - 50
+  BitBucket - 50.
 
 
 TODO
 ----
 
-- SEARCH-PROJECT: add search-space (bitbucket, google-code, etc.)
-- SEARCH-PROJECT: pprint: for discription
+- Add: search-space (google-code, etc.)
+- Pprint: for discription
+
+
+BUGS
+----
+
+- In search-space BitBucket-Repos, the project does not have 'description' is not displayed.
+
 
 
 Author, License, Copyright

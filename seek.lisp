@@ -23,12 +23,12 @@
   "Search for cl project with SEARCH-WORD in Quicklisp, Cliki, Github-Repos BitBucket-Repos.
 SEARCH-WORD must be string or symbol (symbol will be converted to downcase-string).
 
-If WEB? is NIL, not search in Cliki, Github-Repos and BitBucket-Repos.
-If QUICKLISP? is NIL, not search in Quicklisp (also CLIKI?, GITHUB?, BITBUCKET?).
+If WEB? is NIL, it does not search in Cliki, Github-Repos and BitBucket-Repos.
+If QUICKLISP? is NIL, it does not search in Quicklisp (also CLIKI?, GITHUB?, BITBUCKET?).
 At least one search-space must be specified.
 
-If DESCRIPTION? is T, display project's description (except for Quicklisp-search).
-If URL? is T, display project's url (except for Quicklisp-search).
+If DESCRIPTION? is T, it displays project's description (except for Quicklisp-search).
+If URL? is T, it display project's url (except for Quicklisp-search).
 
 N.B.
  * #\\Space in SEARCH-WORD:

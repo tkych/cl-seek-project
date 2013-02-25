@@ -10,8 +10,8 @@ Introduction
 ------------
 
 CL-SEEK-PROJECT is a search-engine-interface for Common Lisp.
-The function SEEK searches for cl project in Quicklisp, Cliki, Github-Repos, BitBucket-Repos.
-And search-results is output in REPL.
+The function SEEK searchs for cl project in Quicklisp, Cliki, Github-Repos, BitBucket-Repos,
+then outputs search-results in REPL.
 
 
 Depends-on
@@ -139,11 +139,11 @@ Referece Manual
 
 Search for cl project with _search-word_ in Quicklisp, Cliki, GitHub-Repos, BitBucket-Repos.
 _search-word_ must be string or symbol (symbol will be coerced to downcase-string).
-If _web?_ is NIL, not search Cliki, GitHub-Repos and BitBucket-Repos.
-If _quicklisp?_ is NIL, not search Quicklisp (also _cliki?_, _github?_, _bitbucket?_).
+If _web?_ is NIL, it does not search Cliki, GitHub-Repos and BitBucket-Repos.
+If _quicklisp?_ is NIL, it does not search Quicklisp (also _cliki?_, _github?_, _bitbucket?_).
 At least one search-space must be specified.
-If _description?_ is T, display project's description (except for Quicklisp-search).
-If _url?_ is T, display project's url (except for Quicklisp-search).
+If _description?_ is T, it displays project's description (except for Quicklisp-search).
+If _url?_ is T, it displays project's url (except for Quicklisp-search).
 
 - Space in _search-word_:
   If _search-word_ contains #\space, Quicklisp-search is OR-search,
@@ -155,7 +155,7 @@ If _url?_ is T, display project's url (except for Quicklisp-search).
 - Max number of search result:
   Quicklisp - unlimited,
   GitHub    - 100,
-  Cliki     - 50
+  Cliki     - 50,
   BitBucket - 50.
 
 

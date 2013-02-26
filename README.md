@@ -48,6 +48,7 @@ SEARCH RESULT: "supercalifragilisticexpialidocious"
 => NIL
 
 CL-REPL> (seek "graphviz")
+
 SEARCH-RESULT: "graphviz"
 
  SEARCH-SPACE: Quicklisp
@@ -65,7 +66,6 @@ SEARCH-RESULT: "graphviz"
   cl-graphviz
   cl-dot
   donuts
-  cl-seek-project
   protocl
   motion-grammar-kit
   sn-explorer
@@ -76,6 +76,7 @@ SEARCH-RESULT: "graphviz"
 => T
 
 CL-REPL> (seek "graphviz" :description? t :cliki? nil)
+
 SEARCH-RESULT: "graphviz"
 
  SEARCH-SPACE: Quicklisp
@@ -106,9 +107,11 @@ SEARCH-RESULT: "graphviz"
 => T
 
 CL-REPL> (setf *description-max-num-cols* 60) ;default is 80
+
 => 60
 
 CL-REPL> (seek "graphviz" :url? t :description? t :cliki? nil :quicklisp? nil)
+
 SEARCH-RESULT: "graphviz"
 
  SEARCH-SPACE: GitHub-Repos
@@ -178,9 +181,9 @@ If _url?_ is T, it displays project's url (except for Quicklisp-search).
   BitBucket - 50.
 
 
-#### [Special Variable] *DESCRIPTION-MAX-NUM-COLS*
+#### [Special Variable] \*DESCRIPTION-MAX-NUM-COLS\*
 
-If the length of description-string is bigger then *description-max-num-cols*, 
+If the length of description-string is bigger then \*description-max-num-cols\*, 
 then search-result is inserted newline for easy to see.
 Default value is 80.
 

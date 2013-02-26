@@ -39,8 +39,8 @@ Examples
 --------
 
 ```lisp
-CL-REPL> (use-package :cl-seek-project)  ;'seek' and '*description-max-num-cols*' is exported symbol.
-T
+CL-REPL> (use-package :seek-project)  ;'seek' and '*description-max-num-cols*' is exported symbol.
+=> T
 
 CL-REPL> (seek 'Supercalifragilisticexpialidocious)
 

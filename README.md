@@ -1,6 +1,6 @@
-Last modified : 2013-02-25 21:37:13 tkych
+Last modified : 2013-02-26 19:54:22 tkych
 
-Version: 0.1.12 (beta)
+Version: 0.1.13 (beta)
 
 
 CL-SEEK-PROJECT : in Quicklisp, Cliki, Github, BitBucket
@@ -39,7 +39,7 @@ Examples
 --------
 
 ```lisp
-CL-REPL> (use-package :cl-seek-project)  ;only 'seek' is exported symbol.
+CL-REPL> (use-package :cl-seek-project)  ;'seek' and '*description-max-num-cols*' is exported symbol.
 T
 
 CL-REPL> (seek 'Supercalifragilisticexpialidocious)
@@ -48,7 +48,6 @@ SEARCH RESULT: "supercalifragilisticexpialidocious"
 => NIL
 
 CL-REPL> (seek "graphviz")
-
 SEARCH-RESULT: "graphviz"
 
  SEARCH-SPACE: Quicklisp
@@ -62,12 +61,13 @@ SEARCH-RESULT: "graphviz"
   Grapher-Server
   s-dot
 
- SEARCH-SPACE: Github-Repos
+ SEARCH-SPACE: GitHub-Repos
   cl-graphviz
-  donuts
   cl-dot
-  motion-grammar-kit
+  donuts
+  cl-seek-project
   protocl
+  motion-grammar-kit
   sn-explorer
   compass
   graph-utils
@@ -76,23 +76,23 @@ SEARCH-RESULT: "graphviz"
 => T
 
 CL-REPL> (seek "graphviz" :description? t :cliki? nil)
-
 SEARCH-RESULT: "graphviz"
 
  SEARCH-SPACE: Quicklisp
   com.informatimago.common-lisp.graphviz
 
- SEARCH-SPACE: Github-Repos
+ SEARCH-SPACE: GitHub-Repos
   cl-graphviz
-      Adaptaion of an outdated cl-graphviz by Attila Lendvai to the modern version of libgvc.so.6.
-  donuts
-      Graph Drawing DSL (or Graphviz Interface) for Common Lisp.
+      Adaptaion of an outdated cl-graphviz by Attila Lendvai to the modern
+      version of libgvc.so.6.
   cl-dot
       Common Lisp package for generating GraphViz (dot) files
-  motion-grammar-kit
-      Formal Language Tools for Robots
+  donuts
+      Graph Drawing DSL (or Graphviz Interface) for Common Lisp.
   protocl
       Native Common Lisp compiler infrastructure for Google's protocol buffers
+  motion-grammar-kit
+      Formal Language Tools for Robots
   sn-explorer
       A simple web crawler for social networks
   compass
@@ -100,33 +100,52 @@ SEARCH-RESULT: "graphviz"
   graph-utils
       graph analysis tools
   wo-git-gui
-      WebGUI for git commit graphs, will mainly focus on trying to reduce the commit graph into manageable overviews
+      WebGUI for git commit graphs, will mainly focus on trying to reduce the
+      commit graph into manageable overviews
 
 => T
 
-CL-REPL> (seek "graphviz" :url? t :description? t :github? nil :quicklisp? nil)
+CL-REPL> (setf *description-max-num-cols* 60) ;default is 80
+=> 60
 
+CL-REPL> (seek "graphviz" :url? t :description? t :cliki? nil :quicklisp? nil)
 SEARCH-RESULT: "graphviz"
 
- SEARCH-SPACE: Cliki
+ SEARCH-SPACE: GitHub-Repos
   cl-graphviz
-      http://www.cliki.net/cl-graphviz
-      cl-graphviz is a CFFI interface to graphviz with cl-graph integration
+      https://github.com/necto/cl-graphviz
+      Adaptaion of an outdated cl-graphviz by Attila Lendvai
+      to the modern version of libgvc.so.6.
   cl-dot
-      http://www.cliki.net/cl-dot
-      CL-DOT is a library for easily generating dot (Graphviz) output from arbitrary Lisp data
-  clod
-      http://www.cliki.net/clod
-      CLOD is a Common Lisp doc-generator, similar to Albert, Cldoc and so on
+      https://github.com/michaelw/cl-dot
+      Common Lisp package for generating GraphViz (dot)
+      files
+  donuts
+      https://github.com/tkych/donuts
+      Graph Drawing DSL (or Graphviz Interface) for Common
+      Lisp.
+  protocl
+      https://github.com/scymtym/protocl
+      Native Common Lisp compiler infrastructure for
+      Google's protocol buffers
+  motion-grammar-kit
+      https://github.com/golems/motion-grammar-kit
+      Formal Language Tools for Robots
+  sn-explorer
+      https://github.com/GChristensen/sn-explorer
+      A simple web crawler for social networks
+  compass
+      https://github.com/abutcher/compass
+      Recursive, k-width tree clusterer based on the
+      Cardinal Directions
   graph-utils
-      http://www.cliki.net/graph-utils
-      graph-utils:  graph analysis utilities for Common Lisp
-  Grapher-Server
-      http://www.cliki.net/Grapher-Server
-      Grapher-Server is an AJAX application combining AllegroServe, CL-Graph and GraphViz by Gary King
-  s-dot
-      http://www.cliki.net/s-dot
-      S-Dot by Martin Loetzsch is a Common Lisp interface to the 'dot' tool of the GraphViz graphics library
+      https://github.com/kraison/graph-utils
+      graph analysis tools
+  wo-git-gui
+      https://github.com/woudshoo/wo-git-gui
+      WebGUI for git commit graphs, will mainly focus on
+      trying to reduce the commit graph into manageable
+      overviews
 
 => T
 ```    
@@ -159,18 +178,17 @@ If _url?_ is T, it displays project's url (except for Quicklisp-search).
   BitBucket - 50.
 
 
+#### [Special Variable] *DESCRIPTION-MAX-NUM-COLS*
+
+If the length of description-string is bigger then *description-max-num-cols*, 
+then search-result is inserted newline for easy to see.
+Default value is 80.
+
+
 TODO
 ----
 
 - Add: search-space (google-code, etc.)
-- Pprint: for discription
-
-
-BUGS
-----
-
-- In search-space BitBucket-Repos, the project does not have 'description' is not displayed.
-
 
 
 Author, License, Copyright

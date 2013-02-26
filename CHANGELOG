@@ -1,3 +1,9 @@
+Version 0.1.13
+2013-02-26
+Add    : pprint for description.
+Fix Bug: not displayed BitBucket project whitch have no description.
+Rename : seek.lisp + package.lisp -> core.lisp
+
 Version 0.1.12
 2013-02-25
 Add:    search-space BitBucket-Repos.
@@ -5,7 +11,7 @@ Modify: tentative modification for quicklisp-build.
 
 Version 0.1.11
 2013-02-22
-Rename: Repo cl-project-search -> cl-seek-project
+Rename: Project-Name cl-project-search -> cl-seek-project
       : Thanks Robert Smith for useful suggestion.
 
 Version 0.1.01

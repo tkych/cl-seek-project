@@ -1,20 +1,30 @@
-;;;; Last modified : 2013-02-25 21:37:38 tkych
+;;;; Last modified : 2013-02-26 19:40:28 tkych
 
-;; cl-seek-project/seek.lisp
+;; cl-seek-project/core.lisp
 
 
 ;;====================================================================
+;; Core
+;;====================================================================
+
+(in-package :cl-user)
+
+(defpackage #:cl-seek-project
+  (:nicknames #:seek-project)
+  (:use :cl :iterate)
+  (:import-from #:anaphora #:aif #:awhen #:it)
+  (:export #:seek #:*description-max-num-cols*))
+
+(in-package #:cl-seek-project)
+
+
+;;--------------------------------------------------------------------
 ;; Seek
-;;====================================================================
-
-(In-package #:cl-seek-project)
-
-
+;;--------------------------------------------------------------------
 (defparameter *output-description-p* t)
 (defparameter *output-url-p* t)
 
-;; !! TODO !! Add: search-space google-code
-;; !! TODO !! Pprint: *display-col-max-num-chars*
+;; !! TODO !! add: search-space google-code
 ;; !! TODO !! limit output num:
 ;;            *display-max-num-projects*, if over limit, y-or-n?
 (defun seek (search-word &key (web? t) (description? nil) (url? nil)
@@ -72,6 +82,7 @@ N.B.
     (terpri)
     found?))
 
+
 ;;--------------------------------------------------------------------
 ;; Quicklisp search
 ;;--------------------------------------------------------------------
@@ -98,7 +109,7 @@ N.B.
     (dolist (system systems)
       (format t "~&  ~A" (ql-dist:name system))
       ;; (when *output-url-p*
-      ;;   (format t "~%      "
+      ;;   (format t "~%      ~A"
       ;;           ))
       ;; (when *output-description-p*
       ;;   (format t "~%      ~A"
@@ -109,40 +120,31 @@ N.B.
 
 
 ;;--------------------------------------------------------------------
-;; Cliki search
+;; web search common functions
 ;;--------------------------------------------------------------------
-(defun gen-cliki-query (word-string)
-  (format nil "http://www.cliki.net/site/search?query=~A"
-          (ppcre:regex-replace-all " " word-string "+")))
+(defparameter *description-max-num-cols* 80
+  "If the length of description-string is bigger then *description-max-num-cols*, then search-result is inserted newline for easy to see.
+Default value is 80.")
 
-(defun search-cliki (word-string)
-  (let* ((query   (gen-cliki-query word-string))
-         (res     (drakma:http-request query))
-         (results (extract-cliki-results res)))
-    (when results
-      (format t "~% SEARCH-SPACE: Cliki~%")
-      (output-cliki-results results)
-      (awhen (extract-cliki-rest-page-url res)
-        (loop :for q :in it
-              :for r := (drakma:http-request q)
-              :do (output-cliki-results (extract-cliki-results r))))
-      (terpri)
-      t)))
+(defparameter *description-indent-num* 6)
 
-(defun extract-cliki-results (res)
-  (let ((<li>s (ppcre:all-matches-as-strings "(?s)<li>(.+?)</li>"
-                 (ppcre:scan-to-strings
-                  "(?s)<ol start=.+?>(.+?)</ol>" res))))
-    (when <li>s
-      (iter (for <li> :in <li>s)
-            (ppcre:register-groups-bind (url title description)
-                ("(?s)<li><a href=\"(.+?)\" class=\"internal\">(.+?)</a>\\s?<br\\s?/?>(.+?)</li>"
-                 <li>)
-              (collect (list title
-                             (when *output-url-p*
-                               url)
-                             (when *output-description-p*
-                               (strip (remove-tags description))))))))))
+(defun pprint-description (desc)
+  (let ((len (length desc))
+        (max-nchars (- *description-max-num-cols*
+                       *description-indent-num*)))
+    (if (<= len max-nchars)
+        (format t "~%      ~A" desc)
+        (let ((space-index
+                (loop :for i :downfrom max-nchars :to 0
+                      :until (char= #\Space (char desc i))
+                      :finally (return (1+ i)))))
+          (if (zerop space-index)
+              (progn
+                (format t "~%      ~A-" (subseq desc 0 (1- max-nchars)))
+                (pprint-description (subseq desc (1- max-nchars))))
+              (progn
+                (format t "~%      ~A" (subseq desc 0 (1- space-index)))
+                (pprint-description (subseq desc space-index))))))))
 
 (defun strip (string)
   (string-trim '(#\Space #\Return #\Newline) string))
@@ -150,22 +152,58 @@ N.B.
 (defun remove-tags (string)
   (ppcre:regex-replace-all "(<.+?>)" string ""))
 
+
+;;--------------------------------------------------------------------
+;; Cliki search
+;;--------------------------------------------------------------------
+(defun gen-cliki-query (word-string)
+  (format nil "http://www.cliki.net/site/search?query=~A"
+          (ppcre:regex-replace-all " " word-string "+")))
+
+(defun search-cliki (word-string)
+  (let* ((query    (gen-cliki-query word-string))
+         (response (drakma:http-request query))
+         (results  (extract-cliki-results response)))
+    (when results
+      (format t "~% SEARCH-SPACE: Cliki~%")
+      (output-cliki-results results)
+      (awhen (extract-cliki-rest-page-url response)
+        (loop :for url :in it
+              :for res := (drakma:http-request url)
+              :do (output-cliki-results (extract-cliki-results res))))
+      (terpri)
+      t)))
+
+(defun extract-cliki-results (response)
+  (let ((<li>s (ppcre:all-matches-as-strings "(?s)<li>(.+?)</li>"
+                 (ppcre:scan-to-strings
+                  "(?s)<ol start=.+?>(.+?)</ol>" response))))
+    (when <li>s
+      (iter (for <li> :in <li>s)
+            (ppcre:register-groups-bind (url title description)
+                ("(?s)<li><a href=\"(.+?)\" class=\"internal\">(.+?)</a>\\s?<br\\s?/?>(.+?)</li>"
+                 <li>)
+              (collect (list title
+                             (when *output-url-p* url)
+                             (when *output-description-p*
+                               (strip (remove-tags description))))))))))
+
 (defun output-cliki-results (results)
   (loop :for (title url description) :in results
         :do (format t "~&  ~A" (html-entities:decode-entities title))
             (when *output-url-p*
               (format t "~%      http://www.cliki.net~A" url))
             (when *output-description-p*
-              (format t "~%      ~A"
-                      (html-entities:decode-entities description)))))
+              (pprint-description
+               (html-entities:decode-entities description)))))
 
 (defparameter *cliki-max-num-of-result-pages* 4) ;total 50
 
 ;; extract-cliki-rest-page-url
-(defun extract-cliki-rest-page-url (res)
+(defun extract-cliki-rest-page-url (response)
   (let ((urls nil)
         (paginator (ppcre:scan-to-strings
-                    "(?s)<div id=\"paginator\">(.+?)</div>" res)))
+                    "(?s)<div id=\"paginator\">(.+?)</div>" response)))
     (ppcre:do-register-groups (query)
         ("<a href=\"\\\?query=(.+?)\">" paginator)
       (push (gen-cliki-query query) urls))
@@ -209,7 +247,7 @@ N.B.
                      (gethash "username" repo) (gethash "name" repo)))
           (awhen (and *output-description-p*
                       (gethash "description" repo))
-            (format t "~%      ~A" it))))
+            (pprint-description it))))
       (terpri)
       t)))
 
@@ -217,22 +255,18 @@ N.B.
 ;;--------------------------------------------------------------------
 ;; BitBucket search
 ;;--------------------------------------------------------------------
-;; !!FIX ME: the project does not have 'description' is not displayed.
-;;           In fn extract-bitbucket-results,
-;;           (ppcre:register-groups-bind (url title description) ...
-
 (defun search-bitbucket (word-string)
-  (let* ((query   (gen-bitbucket-query word-string))
-         (res     (drakma:http-request query :preserve-uri t))
-         (results (extract-bitbucket-results res)))
+  (let* ((query    (gen-bitbucket-query word-string))
+         (response (drakma:http-request query :preserve-uri t))
+         (results  (extract-bitbucket-results response)))
     (when results
       (format t "~% SEARCH-SPACE: BitBucket-Repos~%")
       (output-bitbucket-results results)
-      (awhen (extract-bitbucket-rest-page-url res)
-        (loop :for q :in it
-              :for r := (drakma:http-request q)
+      (awhen (extract-bitbucket-rest-page-url response)
+        (loop :for url :in it
+              :for res := (drakma:http-request url)
               :do (output-bitbucket-results
-                   (extract-bitbucket-results r))))
+                   (extract-bitbucket-results res))))
       (terpri)
       t)))
 
@@ -240,22 +274,24 @@ N.B.
   (format nil "https://bitbucket.org/repo/all/relevance?name=~A&language=common+lisp"
           (ppcre:regex-replace-all " " word-string "+")))
 
-(defun extract-bitbucket-results (res)
+(defun extract-bitbucket-results (response)
   (let ((<article>s (ppcre:all-matches-as-strings
                      "(?s)<article class=\"repo-summary\">(.+?)</article>"
                      (ppcre:scan-to-strings
                       "(?s)<section id=\"repo-list\">(.+?)</section>"
-                      res))))
+                      response))))
     (when <article>s
       (iter (for <article> :in <article>s)
-            (ppcre:register-groups-bind (url title description)
-                ("(?s)<a class=\"repo-link\" href=\"(.+?)\">.+? / (.+?)</a>.+?<p>(.+?)</p>"
+            (ppcre:register-groups-bind (url title)
+                ("(?s)<a class=\"repo-link\" href=\"(.+?)\">.+? / (.+?)</a>"
                  <article>)
               (collect (list title
-                             (when *output-url-p*
-                               url)
+                             (when *output-url-p* url)
                              (when *output-description-p*
-                               (strip (remove-tags description))))))))))
+                               (or (ppcre:register-groups-bind (description)
+                                       ("(?s)<p>(.+?)</p>" <article>)
+                                     (strip (remove-tags description)))
+                                   "")))))))))
 
 (defun output-bitbucket-results (results)
   (loop :for (title url description) :in results
@@ -263,15 +299,15 @@ N.B.
             (when *output-url-p*
               (format t "~%      https://bitbucket.org~A" url))
             (when *output-description-p*
-              (format t "~%      ~A"
-                      (html-entities:decode-entities description)))))
+              (pprint-description
+               (html-entities:decode-entities description)))))
 
 (defparameter *bitbucket-max-num-of-result-pages* 4) ;total 50
 
-(defun extract-bitbucket-rest-page-url (res)
+(defun extract-bitbucket-rest-page-url (response)
   (let ((urls nil)
         (paginator (ppcre:scan-to-strings
-                    "(?s)<ol class=\"paginator\">(.+?)</ol>" res)))
+                    "(?s)<ol class=\"paginator\">(.+?)</ol>" response)))
     (ppcre:do-register-groups (next-url)
         ("<a href=\"(.+?)\">" paginator)
       (push next-url urls))

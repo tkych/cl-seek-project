@@ -39,7 +39,7 @@ Examples
 --------
 
 ```lisp
-CL-REPL> (use-package :seek-project)  ;'seek' and '*description-max-num-cols*' is exported symbol.
+CL-REPL> (use-package :seek-project)  ;'seek' and '*description-max-num-cols*' are exported symbols.
 => T
 
 CL-REPL> (seek 'Supercalifragilisticexpialidocious)
@@ -72,7 +72,8 @@ SEARCH-RESULT: "graphviz"
   compass
   graph-utils
   wo-git-gui
-
+                             ;There is no repo in BitBukect for search-word "graphviz".
+                             ; So BitBucket result is not displayed.
 => T
 
 CL-REPL> (seek "graphviz" :description? t :cliki? nil)

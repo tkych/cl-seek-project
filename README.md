@@ -193,7 +193,7 @@ TODO
 ----
 
 - Add: search-space (google-code, etc.)
-- Asynchronization: http-request
+- Asynchronize: http-request
 
 
 Author, License, Copyright

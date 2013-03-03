@@ -1,4 +1,4 @@
-;;;; Last modified : 2013-02-26 19:40:28 tkych
+;;;; Last modified : 2013-03-03 19:22:48 tkych
 
 ;; cl-seek-project/core.lisp
 
@@ -64,7 +64,7 @@ N.B.
         (*output-url-p* url?)
         (word-string
          (write-to-string search-word :case :downcase :escape nil)))
-    (format t "~&SEARCH-RESULT: ~S~%" word-string)
+    (format t "~%SEARCH-RESULT: ~S~%" word-string)
 
     #+quicklisp  ;!? quicklisp is not library, so probably need add this !?
     (when (and quicklisp? (search-quicklisp word-string))
@@ -123,7 +123,8 @@ N.B.
 ;; web search common functions
 ;;--------------------------------------------------------------------
 (defparameter *description-max-num-cols* 80
-  "If the length of description-string is bigger then *description-max-num-cols*, then search-result is inserted newline for easy to see.
+  "If the length of description-string is bigger then *description-max-num-cols*,
+then search-result is inserted newline for easy to see.
 Default value is 80.")
 
 (defparameter *description-indent-num* 6)
@@ -247,7 +248,8 @@ Default value is 80.")
                      (gethash "username" repo) (gethash "name" repo)))
           (awhen (and *output-description-p*
                       (gethash "description" repo))
-            (pprint-description it))))
+            (unless (string= "" it)
+              (pprint-description it)))))
       (terpri)
       t)))
 
@@ -298,7 +300,7 @@ Default value is 80.")
         :do (format t "~&  ~A" (html-entities:decode-entities title))
             (when *output-url-p*
               (format t "~%      https://bitbucket.org~A" url))
-            (when *output-description-p*
+            (when (and *output-description-p* description)
               (pprint-description
                (html-entities:decode-entities description)))))
 

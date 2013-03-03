@@ -1,4 +1,4 @@
-Last modified : 2013-02-26 19:54:22 tkych
+Last modified : 2013-03-03 19:20:47 tkych
 
 Version: 0.1.13 (beta)
 
@@ -193,6 +193,7 @@ TODO
 ----
 
 - Add: search-space (google-code, etc.)
+- Asynchronization: http-request
 
 
 Author, License, Copyright

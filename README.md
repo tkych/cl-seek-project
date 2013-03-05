@@ -1,9 +1,12 @@
-Last modified : 2013-03-03 19:20:47 tkych
+
+### !!! BUG 2013-03-03 19:30: Currently, GitHub-search is all language search. !!!
+
+Last modified : 2013-03-03 19:30 tkych
 
 Version: 0.1.13 (beta)
 
 
-CL-SEEK-PROJECT : in Quicklisp, Cliki, Github, BitBucket
+CL-SEEK-PROJECT : in Quicklisp, Cliki, GitHub, BitBucket
 ========================================================
 
 Introduction

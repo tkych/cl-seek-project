@@ -1,5 +1,4 @@
-
-### !!! BUG 2013-03-03 19:30: Currently, GitHub-search is all language search. !!!
+### !!! BUG: Currently, GitHub-search is all language search. Please set :github? nil !!!
 
 Last modified : 2013-03-03 19:30 tkych
 

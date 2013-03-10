@@ -1,4 +1,4 @@
-Last modified : 2013-03-10 22:00:13 tkych
+Last modified : 2013-03-10 22:03:37 tkych
 
 Version: 0.1.14 (beta)
 
@@ -37,11 +37,7 @@ Examples
 --------
 
 ```lisp
-<<<<<<< HEAD
 CL-REPL> (use-package :seek-project)  ;'seek' and '*max-num-description-columns*' are exported symbols.
-=======
-CL-REPL> (use-package :seek-project)  ;all symbols which are exported are 'seek' and '*description-max-num-cols*'.
->>>>>>> b2457a47662b64257322c25ed807a6754a2476d9
 => T
 
 CL-REPL> (seek 'Supercalifragilisticexpialidocious)
@@ -194,7 +190,7 @@ Default value is 80.
 TODO
 ----
 
-- Add: limit?, *max-num-web-search-results*
+- Add: limit?, \*max-num-web-search-results\*
 - Add: search-space (google-code, etc.)
 - Asynchronize: http-request
 

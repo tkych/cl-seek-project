@@ -1,3 +1,8 @@
+Version 0.1.14
+2013-03-10
+Fix Bug: github-search, all language, api-v3 -> advanced search
+Rename : *description-max-num-cols* -> *max-num-description-columns*
+
 Version 0.1.13
 2013-02-26
 Add    : pprint for description.

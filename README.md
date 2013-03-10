@@ -1,6 +1,6 @@
-Last modified : 2013-03-03 19:20:47 tkych
+Last modified : 2013-03-10 21:53:27 tkych
 
-Version: 0.1.13 (beta)
+Version: 0.1.14 (beta)
 
 
 CL-SEEK-PROJECT : in Quicklisp, Cliki, Github, BitBucket
@@ -22,8 +22,6 @@ Depends-on
 - cl-ppcre
 - drakma
 - flexi-streams
-- yason
-- do-urlencode
 - html-entities
 
 
@@ -39,7 +37,7 @@ Examples
 --------
 
 ```lisp
-CL-REPL> (use-package :seek-project)  ;'seek' and '*description-max-num-cols*' are exported symbols.
+CL-REPL> (use-package :seek-project)  ;'seek' and '*max-num-description-columns*' are exported symbols.
 => T
 
 CL-REPL> (seek 'Supercalifragilisticexpialidocious)
@@ -107,7 +105,7 @@ SEARCH-RESULT: "graphviz"
 
 => T
 
-CL-REPL> (setf *description-max-num-cols* 60) ;default is 80
+CL-REPL> (setf *max-num-description-columns* 60) ;default is 80
 
 => 60
 
@@ -177,14 +175,14 @@ If _url?_ is T, it displays project's url (except for Quicklisp-search).
 
 - Max number of search result:
   Quicklisp - unlimited,
-  GitHub    - 100,
+  GitHub    - 50,
   Cliki     - 50,
   BitBucket - 50.
 
 
-#### [Special Variable] \*DESCRIPTION-MAX-NUM-COLS\*
+#### [Special Variable] \*MAX-NUM-DESCRIPTION-COLUMNS\*
 
-If the length of description-string is bigger then \*description-max-num-cols\*, 
+If the length of description-string is bigger then \*max-num-description-columns\*, 
 then search-result is inserted newline for easy to see.
 Default value is 80.
 
@@ -192,8 +190,9 @@ Default value is 80.
 TODO
 ----
 
+- Add: limit?, *max-num-web-search-results*
 - Add: search-space (google-code, etc.)
-- Asynchronization: http-request
+- Asynchronize: http-request
 
 
 Author, License, Copyright

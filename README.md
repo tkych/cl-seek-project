@@ -1,9 +1,9 @@
-Last modified : 2013-03-10 21:53:27 tkych
+Last modified : 2013-03-10 22:00:13 tkych
 
 Version: 0.1.14 (beta)
 
 
-CL-SEEK-PROJECT : in Quicklisp, Cliki, Github, BitBucket
+CL-SEEK-PROJECT : in Quicklisp, Cliki, GitHub, BitBucket
 ========================================================
 
 Introduction
@@ -37,7 +37,11 @@ Examples
 --------
 
 ```lisp
+<<<<<<< HEAD
 CL-REPL> (use-package :seek-project)  ;'seek' and '*max-num-description-columns*' are exported symbols.
+=======
+CL-REPL> (use-package :seek-project)  ;all symbols which are exported are 'seek' and '*description-max-num-cols*'.
+>>>>>>> b2457a47662b64257322c25ed807a6754a2476d9
 => T
 
 CL-REPL> (seek 'Supercalifragilisticexpialidocious)

@@ -1,4 +1,4 @@
-Last modified : 2013-03-10 22:03:37 tkych
+Last modified : 2013-03-20 21:08:17 tkych
 
 Version: 0.1.14 (beta)
 
@@ -25,12 +25,12 @@ Depends-on
 - html-entities
 
 
-Download & Install
-------------------
+Installation
+------------
 
-0. SHELL$   `git clone https://github.com/tkych/cl-seek-project.git`
-1. CL-REPL> `(push #p"/path-to-cl-seek-project/cl-seek-project/" asdf:*central-registry*)`
-2. CL-REPL> `(ql:quickload :cl-seek-project)`
+Quickloadable
+
+CL-REPL> `(ql:quickload :cl-seek-project)`
 
 
 Examples

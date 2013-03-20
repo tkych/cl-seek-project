@@ -1,4 +1,4 @@
-;;;; Last modified : 2013-03-10 21:45:56 tkych
+;;;; Last modified : 2013-03-20 21:30:03 tkych
 
 ;; cl-seek-project/core.lisp
 
@@ -192,9 +192,10 @@ Default value is 80.")
   (gen-query "http://www.cliki.net/site/search?query=~A" word-string))
 
 (defun extract-cliki-results (response)
-  (let ((repos (ppcre:all-matches-as-strings "(?s)repo(.+?)</li>"
-                 (ppcre:scan-to-strings
-                  "(?s)<ol start=.+?>(.+?)</ol>" response))))
+  (let* ((results (ppcre:scan-to-strings
+                   "(?s)<ol start=.+?>(.+?)</ol>" response))
+         (repos (ppcre:all-matches-as-strings
+                 "(?s)repo(.+?)</li>" results)))
     (when repos
       (iter (for repo :in repos)
             (ppcre:register-groups-bind (url title description)
@@ -289,17 +290,18 @@ Default value is 80.")
              word-string))
 
 (defun extract-github-results (response)
-  (let ((repos (ppcre:all-matches-as-strings
-                "(?s)<h3>(.+?)</p>"
-                (ppcre:scan-to-strings
-                 "(?s)<ul class=\"repolist js-repo-list\">(.+<!-- /.body -->)"
-                 response))))
+  (let* ((results (ppcre:scan-to-strings
+                   "(?s)<ul class=\"repolist js-repo-list\">(.+<!-- /.body -->)"
+                   response))
+         (repos (ppcre:all-matches-as-strings
+                 "(?s)<h3>(.+?)</p>"
+                 results)))
     (when repos
       (iter (for repo :in repos)
             (ppcre:register-groups-bind (url title)
                 ("(?s)<h3>.+?<a href=\"/(.+?)\">.+?/(.+?)</a>" repo)
               (collect
-                  (list title
+                  (list (ppcre:regex-replace-all "</?em>" title "")
                         (when *url-print-p* url)
                         (when *description-print-p*
                           (ppcre:register-groups-bind
@@ -355,11 +357,12 @@ Default value is 80.")
              word-string))
 
 (defun extract-bitbucket-results (response)
-  (let ((repos (ppcre:all-matches-as-strings
-                "(?s)<article class=\"repo-summary\">(.+?)</article>"
-                (ppcre:scan-to-strings
-                 "(?s)<section id=\"repo-list\">(.+?)</section>"
-                 response))))
+  (let* ((results (ppcre:scan-to-strings
+                   "(?s)<section id=\"repo-list\">(.+?)</section>"
+                   response))
+         (repos (ppcre:all-matches-as-strings
+                 "(?s)<article class=\"repo-summary\">(.+?)</article>"
+                 results)))
     (when repos
       (iter (for repo :in repos)
             (ppcre:register-groups-bind (url title)

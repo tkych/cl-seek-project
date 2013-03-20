@@ -1,4 +1,4 @@
-;;;; Last modified : 2013-03-10 21:53:01 tkych
+;;;; Last modified : 2013-03-20 21:34:06 tkych
 
 ;; cl-seek-project/cl-seek-project.asd
 
@@ -23,7 +23,7 @@
 (asdf:defsystem #:cl-seek-project
   :name        "cl-seek-project"
   :description "Seek for CL project in Quicklisp, Cliki, GitHub-Repos, BitBucket-Repos."
-  :version     "0.1.14"
+  :version     "0.1.15"
   :licence     "MIT License"
   :author      "Takaya Ochiai <tkych.repl@gmail.com>"
   :depends-on  (#:cl-ppcre #:iterate #:anaphora #:drakma

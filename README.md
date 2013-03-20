@@ -1,6 +1,6 @@
-Last modified : 2013-03-20 21:12:30 tkych
+Last modified : 2013-03-20 21:33:48 tkych
 
-Version: 0.1.14 (beta)
+Version: 0.1.15 (beta)
 
 
 CL-SEEK-PROJECT : in Quicklisp, Cliki, GitHub, BitBucket

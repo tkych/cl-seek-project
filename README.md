@@ -1,4 +1,4 @@
-Last modified : 2013-03-20 21:08:17 tkych
+Last modified : 2013-03-20 21:12:30 tkych
 
 Version: 0.1.14 (beta)
 
@@ -28,9 +28,7 @@ Depends-on
 Installation
 ------------
 
-Quickloadable
-
-CL-REPL> `(ql:quickload :cl-seek-project)`
+Quickloadable, just type `(ql:quickload :cl-seek-project)` at REPL.
 
 
 Examples

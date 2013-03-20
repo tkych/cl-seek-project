@@ -1,6 +1,7 @@
 Version 0.1.15
 2013-03-20
-Fix Print: github-search, remove output's emphasis tags <em>~</em>.
+Fix Bug: cliki-search, regex.
+       : github-search, remove output's emphasis tags <em>~</em>.
 
 Version 0.1.14
 2013-03-10

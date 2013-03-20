@@ -1,4 +1,4 @@
-;;;; Last modified : 2013-03-20 21:30:03 tkych
+;;;; Last modified : 2013-03-20 21:48:12 tkych
 
 ;; cl-seek-project/core.lisp
 
@@ -195,11 +195,11 @@ Default value is 80.")
   (let* ((results (ppcre:scan-to-strings
                    "(?s)<ol start=.+?>(.+?)</ol>" response))
          (repos (ppcre:all-matches-as-strings
-                 "(?s)repo(.+?)</li>" results)))
+                 "(?s)<li>(.+?)</li>" results)))
     (when repos
       (iter (for repo :in repos)
             (ppcre:register-groups-bind (url title description)
-                ("(?s)repo<a href=\"(.+?)\" class=\"internal\">(.+?)</a>\\s?<br\\s?/?>(.+?)</li>"
+                ("(?s)<li><a href=\"(.+?)\" class=\"internal\">(.+?)</a>\\s?<br\\s?/?>(.+?)</li>"
                  repo)
               (collect (list title
                              (when *url-print-p* url)

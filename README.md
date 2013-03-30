@@ -1,4 +1,4 @@
-Last modified : 2013-03-20 21:33:48 tkych
+Last modified : 2013-03-30 09:26:08 tkych
 
 Version: 0.1.15 (beta)
 
@@ -28,14 +28,23 @@ Depends-on
 Installation
 ------------
 
-Quickloadable, just type `(ql:quickload :cl-seek-project)` at REPL.
+#### Auto
+
+[Quickloadable](http://www.quicklisp.org/), just type `(ql:quickload :cl-seek-project)` in CL-REPL.
+
+
+#### Manual
+
+1. SHELL$   `git clone https://github.com/tkych/cl-seek-project.git`
+2. CL-REPL> `(push #p"/path-to-download-directory/cl-seek-project/" asdf:*central-registry*)`
+3. CL-REPL> `(ql:quickload :cl-seek-project)`
 
 
 Examples
 --------
 
 ```lisp
-CL-REPL> (use-package :seek-project)  ;'seek' and '*max-num-description-columns*' are exported symbols.
+CL-REPL> (use-package :seek-project)  ;Exported symbols are 'seek' and '*max-num-description-columns*'.
 => T
 
 CL-REPL> (seek 'Supercalifragilisticexpialidocious)
@@ -181,7 +190,7 @@ If _url?_ is T, it displays project's url (except for Quicklisp-search).
 #### [Special Variable] \*MAX-NUM-DESCRIPTION-COLUMNS\*
 
 If the length of description-string is bigger then \*max-num-description-columns\*, 
-then search-result is inserted newline for easy to see.
+then description-string is formated for easy to see.
 Default value is 80.
 
 

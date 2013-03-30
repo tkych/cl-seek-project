@@ -1,4 +1,4 @@
-Last modified : 2013-03-30 09:26:08 tkych
+Last modified : 2013-03-30 19:57:27 tkych
 
 Version: 0.1.15 (beta)
 
@@ -33,10 +33,10 @@ Installation
 [Quickloadable](http://www.quicklisp.org/), just type `(ql:quickload :cl-seek-project)` in CL-REPL.
 
 
-#### Manual
+#### Manual (Latest version)
 
 1. SHELL$   `git clone https://github.com/tkych/cl-seek-project.git`
-2. CL-REPL> `(push #p"/path-to-download-directory/cl-seek-project/" asdf:*central-registry*)`
+2. CL-REPL> `(push #p"/path-to/cl-seek-project/" asdf:*central-registry*)`
 3. CL-REPL> `(ql:quickload :cl-seek-project)`
 
 

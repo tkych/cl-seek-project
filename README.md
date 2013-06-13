@@ -1,6 +1,6 @@
-Last modified : 2013-03-30 19:57:27 tkych
+Last modified : 2013-06-13 20:30 tkych
 
-Version: 0.1.15 (beta)
+Version: 0.1.15 (final), this project is obsoleted by [Quicksearch](https://github.com/tkych/quicksearch).
 
 
 CL-SEEK-PROJECT : in Quicklisp, Cliki, GitHub, BitBucket
